@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Player {
     private String id;
     private String nome;
+    private String pass;
     private String desc;
     private boolean online;
     private double reputacao;
@@ -13,33 +14,37 @@ public class Player {
     public Player(){
         this.id = new String();
         this.nome = new String();
+        this.pass = new String();
         this.desc = new String();
         this.online = true;
         this.reputacao = 0.0;
         this.procura = new Jogo();
     }
 
-    public Player(String id,String nome, String desc){
+    public Player(String id,String nome,String pass, String desc){
         this.id = id;
         this.nome = nome;
         this.desc = desc;
+        this.pass = pass;
         this.online = true;
         this.reputacao = 0.0;
         this.procura = new Jogo();
     }
 
-    public Player(String id,String nome, String desc, Jogo procura){
+    public Player(String id,String nome, String pass, String desc, Jogo procura){
         this.id = id;
         this.nome = nome;
+        this.pass = pass;
         this.desc = desc;
         this.online = true;
         this.reputacao = 0.0;
         this.procura = procura.clone();
     }
 
-    public Player(String id,String nome, String desc, double rep, Jogo procura){
+    public Player(String id,String nome, String pass, String desc, double rep, Jogo procura){
         this.id = id;
         this.nome = nome;
+        this.pass = pass;
         this.desc = desc;
         this.reputacao = 0.0;
         this.online = true;
@@ -47,9 +52,10 @@ public class Player {
         this.procura = procura.clone();
     }
 
-    public Player(String id,String nome, String desc, double rep){
+    public Player(String id,String nome, String pass, String desc, double rep){
         this.id = id;
         this.nome = nome;
+        this.pass = pass;
         this.desc = desc;
         this.reputacao = 0.0;
         this.online = true;
@@ -105,8 +111,16 @@ public class Player {
         return reputacao;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     public Player clone(){
-        return new Player(this.id,this.nome,this.desc,this.reputacao);
+        return new Player(this.id,this.nome,this.pass,this.desc,this.reputacao);
     }
 
     @Override
@@ -114,11 +128,11 @@ public class Player {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return online == player.online && Double.compare(player.reputacao, reputacao) == 0 && Objects.equals(id, player.id) && Objects.equals(nome, player.nome) && Objects.equals(desc, player.desc) && Objects.equals(procura, player.procura);
+        return online == player.online && Double.compare(player.reputacao, reputacao) == 0 && Objects.equals(id, player.id) && Objects.equals(nome, player.nome) && Objects.equals(pass, player.pass) && Objects.equals(desc, player.desc) && Objects.equals(procura, player.procura);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, desc, online, reputacao, procura);
+        return Objects.hash(id, nome, pass, desc, online, reputacao, procura);
     }
 }

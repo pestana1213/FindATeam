@@ -60,6 +60,17 @@ public class FazTudo {
                 faltam--;
             }
         }
+
         return ret;
     }
+
+    public boolean login(String id, String pass){
+        for (Player p : this.players){
+            if (p.getId().equals(id)){
+                if(p.getPass().equals(pass)) return true;
+             }
+        }
+        return false;
+    }
+
 }

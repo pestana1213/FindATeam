@@ -1,24 +1,23 @@
+import javax.swing.*;
 import java.util.Objects;
 
-public class Jogo{
+public class Jogo {
     private String id;
     private String nome;
     private int teamates;
 
-    public Jogo(){
+    public Jogo() {
         this.id = new String();
         this.nome = new String();
         this.teamates = 1;
     }
 
-    public Jogo(String id,String nome, int teamates) throws Exception {
-        if (teamates >= 1 && id.charAt(0)=='J')
-        {
+    public Jogo(String id, String nome, int teamates) throws Exception {
+        if (teamates >= 1 && id.charAt(0) == 'J') {
             this.id = id;
             this.nome = nome;
             this.teamates = teamates;
-        }
-        else{
+        } else {
             throw new Exception("Impossivel criar jogo");
         }
     }
@@ -52,7 +51,7 @@ public class Jogo{
         this.teamates = teamates;
     }
 
-    public Jogo clone(){
+    public Jogo clone() {
         Jogo jogo = new Jogo();
         try {
             jogo = new Jogo(this.id, this.nome, this.teamates);
@@ -60,5 +59,9 @@ public class Jogo{
             e.printStackTrace();
         }
         return jogo;
+    }
+
+    public JLabel displayJogo() {
+        return new JLabel("Jogo: " + this.nome);
     }
 }
